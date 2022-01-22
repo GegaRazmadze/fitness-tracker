@@ -1,10 +1,10 @@
 <mat-sidenav-container class="h-100">
-  <mat-sidenav class="h-100 col-4 col-md-3 col-xl-2" #sidenav role="navigation">
+  <mat-sidenav class="h-100 col-6 col-sm-5" #sidenav role="navigation">
     <p>Im the sidnave</p>
   </mat-sidenav>
   <mat-sidenav-content class="h-100">
     <mat-toolbar color="primary">
-      <div>
+      <div class="d-sm-block d-md-none">
         <button mat-icon-button (click)="onToggle()">
           <mat-icon>menu</mat-icon>
         </button>
@@ -13,7 +13,7 @@
         <a class="text-decoration-none text-white" routerLink="/">LOGO</a>
       </div>
       <div class="container d-flex justify-content-end">
-        <ul class="list-inline">
+        <ul class="list-inline d-none d-md-block">
           <li class="list-inline-item">
             <a class="text-decoration-none text-white" routerLink="/signup"
               >Signup</a
