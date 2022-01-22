@@ -2,20 +2,26 @@
 //My Custom Scss From Fixing Bootstrap-Material Bug
 @import "/src/assets/scss/variables";
 
-// Import functions, variables, and mixins needed by other Bootstrap files
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+// // Import functions, variables, and mixins needed by other Bootstrap files
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
 
-// Import Bootstrap Reboot
-@import "~bootstrap/scss/root"; // Contains :root CSS variables used by other Bootstrap files
-@import "~bootstrap/scss/reboot";
+// // Import Bootstrap Reboot
+// @import "~bootstrap/scss/root"; // Contains :root CSS variables used by other Bootstrap files
+// @import "~bootstrap/scss/reboot";
 
-@import "~bootstrap/scss/containers"; // Add .container and .container-fluid classes
-@import "~bootstrap/scss/grid"; // Add the grid system
+@import "~bootstrap/scss/bootstrap-reboot.scss";
 
-@import "~bootstrap/scss/utilities"; // Configures the utility classes that should be generated
-@import "~bootstrap/scss/utilities/api"; // Generates the actual utility classes
+// @import "~bootstrap/scss/containers"; // Add .container and .container-fluid classes
+// @import "~bootstrap/scss/grid"; // Add the grid system
+
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+// @import "~bootstrap/scss/utilities"; // Configures the utility classes that should be generated
+// @import "~bootstrap/scss/utilities/api"; // Generates the actual utility classes
+
+@import "~bootstrap/scss/bootstrap-utilities.scss";
 
 //My Custom Scss From Fixing Bootstrap-Material Bug
 @import "/src/assets/scss/reset.scss";
