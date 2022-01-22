@@ -1,6 +1,25 @@
 <mat-sidenav-container class="h-100">
   <mat-sidenav class="h-100 col-6 col-sm-5" #sidenav role="navigation">
-    <p>Im the sidnave</p>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/signup" (click)="onToggle()">
+        <mat-icon>face</mat-icon>
+        <span class="d-inline-block ps-2">Signup</span>
+      </a>
+      <a mat-list-item routerLink="/login" (click)="onToggle()">
+        <mat-icon>input</mat-icon>
+        <span class="d-inline-block ps-2">Login</span>
+      </a>
+      <a mat-list-item routerLink="/training" (click)="onToggle()">
+        <mat-icon>fitness_center</mat-icon>
+        <span class="d-inline-block ps-2">Training</span>
+      </a>
+      <mat-list-item>
+        <button mat-icon-button (click)="onToggle()">
+          <mat-icon>logout</mat-icon>
+          <span class="d-inline-block ps-2">Logout</span>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="h-100">
     <mat-toolbar color="primary">
@@ -28,6 +47,9 @@
             <a class="text-decoration-none text-white" routerLink="/training"
               >Training</a
             >
+          </li>
+          <li class="list-inline-item">
+            <a class="text-decoration-none text-white">Logout</a>
           </li>
         </ul>
       </div>
