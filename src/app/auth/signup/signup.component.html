@@ -1,10 +1,10 @@
-<section class="container">
+<section class="container mt-4">
   <form
     class="row flex-column align-items-center"
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
-    <mat-form-field class="col-md-6 mb-3">
+    <mat-form-field class="col-md-8 col-lg-6 mb-3">
       <input
         type="email"
         matInput
@@ -23,7 +23,7 @@
       >
     </mat-form-field>
     <mat-form-field
-      class="col-md-6 mb-3"
+      class="col-md-8 col-lg-6 mb-3"
       hintLabel="Should be at least 6 characters long."
     >
       <input
@@ -39,7 +39,7 @@
       <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
       <mat-error>Has to be at least 6 characters long.</mat-error>
     </mat-form-field>
-    <mat-form-field class="col-md-6 mb-3">
+    <mat-form-field class="col-md-8 col-lg-6 mb-3">
       <mat-label>Your birthdate</mat-label>
       <input
         matInput
@@ -54,7 +54,7 @@
     </mat-form-field>
 
     <mat-checkbox
-      class="col-md-6 mb-5"
+      class="col-md-8 col-lg-6 mb-5"
       color="primary"
       ngModel
       name="agree"
@@ -62,7 +62,7 @@
       >Agree to Terms and Conditions.</mat-checkbox
     >
     <button
-      class="col-md-2 btn-submit"
+      class="col-md-3 col-lg-2 btn-submit"
       type="submit"
       mat-raised-button
       color="primary"
@@ -72,18 +72,3 @@
     </button>
   </form>
 </section>
-
-<!-- <h1>heading 1</h1>
-<h2>heading 2</h2>
-
-<p>
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim excepturi
-  expedita autem ipsam! Aut minus, unde obcaecati eligendi nulla sit aliquid
-  dolore, ad, debitis nostrum possimus. Quae consequuntur qui ducimus.
-</p>
-
-<ul>
-  <li>list 1</li>
-  <li>list 2</li>
-  <li>list 3</li>
-</ul> -->

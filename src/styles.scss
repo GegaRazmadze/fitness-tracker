@@ -18,6 +18,12 @@
 
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
+@include media-breakpoint-down(sm) {
+  * {
+    font-size: medium;
+  }
+}
+
 // @import "~bootstrap/scss/utilities"; // Configures the utility classes that should be generated
 // @import "~bootstrap/scss/utilities/api"; // Generates the actual utility classes
 
