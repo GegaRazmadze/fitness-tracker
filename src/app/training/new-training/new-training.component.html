@@ -1,9 +1,23 @@
 <section class="container d-flex justify-content-center">
-  <mat-card class="row col-6 mt-3">
+  <mat-card
+    class="row col-10 col-sm-8 col-6 col-lg-4 mt-3 pt-5 pb-5 text-center"
+  >
     <mat-card-title> Time to start a workout! </mat-card-title>
-    <mat-card-content> Select type of training </mat-card-content>
+    <mat-card-content class="mt-3 mb-0">
+      <mat-form-field class="mt-3" appearance="fill">
+        <mat-label>Training</mat-label>
+        <mat-select>
+          <mat-option value="crunches">Crunches</mat-option>
+          <mat-option value="touch-toes">Touch Toes</mat-option>
+          <mat-option value="side-lunges">Side Lunges</mat-option>
+          <mat-option value="burpees">Burpees</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
     <mat-card-actions>
-      <button type="submit" mat-button>Start</button>
+      <button class="col-4" type="submit" mat-button color="primary">
+        Start
+      </button>
     </mat-card-actions>
   </mat-card>
 </section>
