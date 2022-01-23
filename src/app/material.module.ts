@@ -17,6 +17,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
     MatTabsModule,
     MatCardModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatDatepickerModule,
@@ -48,6 +50,7 @@ import { MatCardModule } from '@angular/material/card';
     MatTabsModule,
     MatCardModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MaterialModule {}
