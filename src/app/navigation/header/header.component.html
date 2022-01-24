@@ -23,7 +23,9 @@
         >
       </li>
       <li class="list-inline-item" *ngIf="isAuth">
-        <a class="text-decoration-none text-white">Logout</a>
+        <a class="text-decoration-none text-white" (click)="onLogout()"
+          >Logout</a
+        >
       </li>
     </ul>
   </div>

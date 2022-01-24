@@ -12,7 +12,7 @@
     <span class="d-inline-block ps-2">Training</span>
   </a>
   <mat-list-item>
-    <button mat-icon-button (click)="onToggle()" *ngIf="isAuth">
+    <button mat-icon-button (click)="onToggle(); onLogout()" *ngIf="isAuth">
       <mat-icon>logout</mat-icon>
       <span class="d-inline-block ps-2">Logout</span>
     </button>
