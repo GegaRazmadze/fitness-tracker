@@ -12,7 +12,7 @@ export class TrainingComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onTrainingStart() {
-    this.ongoingTraining = true;
+  onTrainingStartEndToggle() {
+    this.ongoingTraining = !this.ongoingTraining;
   }
 }
