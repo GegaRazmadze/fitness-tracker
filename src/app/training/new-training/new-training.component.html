@@ -1,28 +1,35 @@
 <section class="container d-flex justify-content-center">
-  <mat-card
-    class="row col-10 col-sm-8 col-6 col-lg-4 mt-3 pt-5 pb-5 text-center"
+  <form
+    class="row col-10 col-sm-8 col-6 col-lg-4 mt-3"
+    (ngSubmit)="onStartTraining(f)"
+    #f="ngForm"
   >
-    <mat-card-title> Time to start a workout! </mat-card-title>
-    <mat-card-content class="mt-3 mb-0">
-      <mat-form-field class="mt-3" appearance="fill">
-        <mat-label>Training</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let Exercise of Exercises" [value]="Exercise.id">
-            {{ Exercise.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button
-        class="col-4"
-        type="submit"
-        mat-button
-        color="primary"
-        (click)="onStartTraining()"
-      >
-        Start
-      </button>
-    </mat-card-actions>
-  </mat-card>
+    <mat-card class="pt-5 pb-5 text-center">
+      <mat-card-title> Time to start a workout! </mat-card-title>
+      <mat-card-content class="mt-3 mb-0">
+        <mat-form-field class="mt-3" appearance="fill">
+          <mat-label>Training</mat-label>
+          <mat-select ngModel name="exercise" required>
+            <mat-option
+              *ngFor="let Exercise of Exercises"
+              [value]="Exercise.id"
+            >
+              {{ Exercise.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          class="col-4"
+          type="submit"
+          mat-button
+          color="primary"
+          [disabled]="f.invalid"
+        >
+          Start
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
 </section>
