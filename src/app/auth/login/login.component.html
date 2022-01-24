@@ -1,1 +1,84 @@
-<p>login works!</p>
+<!-- <section>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email"
+      />
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Your password"
+        formControlName="password"
+      />
+      <mat-hint>Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</section> -->
+
+<!-- fxLayout="column"
+fxLayoutAlign="center center"
+fxLayoutGap="10px" -->
+
+<section class="container mt-4">
+  <form
+    class="row flex-column align-items-center"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field class="col-md-8 col-lg-6 mb-3">
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email"
+      />
+      <!-- <mat-hint>Please enter a valid email.</mat-hint> -->
+      <mat-error>Invalid or missing email.</mat-error>
+      <!-- <mat-error  *ngIf="loginForm.controls["email"].hasError('required')">Field must not be empty</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >E-Mail is invalid.</mat-error
+      > -->
+    </mat-form-field>
+    <mat-form-field
+      class="col-md-8 col-lg-6 mb-3"
+      hintLabel="Should be at least 6 characters long."
+    >
+      <input
+        type="password"
+        matInput
+        placeholder="Your password"
+        formControlName="password"
+      />
+      <!-- <mat-hint><small>Please enter your password.</small></mat-hint> -->
+      <mat-error>Missing password.</mat-error>
+      <!-- <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint> -->
+      <!-- <mat-error>Has to be at least 6 characters long.</mat-error> -->
+    </mat-form-field>
+
+    <button
+      class="col-md-3 col-lg-2 mt-5"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</section>
