@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-fitness-tracker-ca3de": {
+      "hosting": {
+        "fitness-tracker": [
+          "ng-fitness-tracker-ca3de"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-fitness-tracker-ca3de"
+  }
+}
