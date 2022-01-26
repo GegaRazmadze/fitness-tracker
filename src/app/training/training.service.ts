@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Exercise } from './exercise.model';
 
 @Injectable({
@@ -7,19 +9,49 @@ import { Exercise } from './exercise.model';
 })
 export class TrainingService {
   exerciseChanged = new Subject<Exercise>();
-
-  private availableExercise: Exercise[] = [
-    { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
-    { id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15 },
-    { id: 'side-lunges', name: 'Side Lunges', duration: 120, calories: 18 },
-    { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 },
-  ];
+  exercisesChanged = new Subject<Exercise[]>();
+  private availableExercise: Exercise[] = [];
 
   private runningExercise!: Exercise;
   private exercises: Exercise[] = [];
 
-  getExercises() {
-    return this.availableExercise.slice();
+  constructor(private db: AngularFirestore) {}
+
+  fetchAvailableExercises() {
+    this.db
+      .collection('availableExercises')
+      .snapshotChanges()
+      .pipe(
+        map((docArray: any[]) => {
+          console.log(docArray);
+
+          return docArray.map(
+            (doc: {
+              payload: {
+                doc: {
+                  id: string;
+                  data: () => {
+                    name: string;
+                    duration: number;
+                    calories: number;
+                  };
+                };
+              };
+            }) => {
+              return {
+                id: doc.payload.doc.id,
+                name: doc.payload.doc.data().name,
+                duration: doc.payload.doc.data().duration,
+                calories: doc.payload.doc.data().calories,
+              };
+            }
+          );
+        })
+      )
+      .subscribe((exercises: Exercise[]) => {
+        this.availableExercise = exercises;
+        this.exercisesChanged.next([...this.availableExercise]);
+      });
   }
 
   startExercise(selectedId: string) {
