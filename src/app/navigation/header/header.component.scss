@@ -1,7 +1,6 @@
-@import "~bootstrap/scss/bootstrap-utilities.scss";
-
+// @import "~bootstrap/scss/bootstrap-utilities.scss";
 a:hover,
 a:active {
-  color: $gray-300 !important;
+  color: var(--gray-300) !important;
   cursor: pointer;
 }
