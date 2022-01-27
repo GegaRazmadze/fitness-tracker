@@ -15,7 +15,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,7 @@ import { TrainingModule } from './training/training.module';
     AngularFireModule.initializeApp(environment.firebase),
 
     AppRoutingModule,
-    TrainingModule,
+
     AuthModule,
   ],
   providers: [],
