@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 import { AuthData } from './auth-data.model';
-import { User } from './user.model';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { TrainingService } from '../training/training.service';
@@ -19,7 +20,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private trainingService: TrainingService
+    private trainingService: TrainingService,
+    private snackbar: MatSnackBar
   ) {}
 
   initAuthListener() {
@@ -42,7 +44,9 @@ export class AuthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {})
       .catch((error) => {
-        console.log(error);
+        this.snackbar.open(error.message, undefined, {
+          duration: 3000,
+        });
       });
   }
 
@@ -51,7 +55,9 @@ export class AuthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {})
       .catch((error) => {
-        console.log(error);
+        this.snackbar.open(error.message, undefined, {
+          duration: 3000,
+        });
       });
   }
 
