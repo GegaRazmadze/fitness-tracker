@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { TrainingService } from '../training.service';
 import { Exercise } from '../exercise.model';
-import { UIService } from 'src/app/auth/shared/ui.service';
+import { UIService } from 'src/app/shared/ui.service';
 
 @Component({
   selector: 'app-new-training',
@@ -49,6 +49,11 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.SubscriptionExercise.unsubscribe();
+    if (this.SubscriptionExercise) {
+      this.SubscriptionExercise.unsubscribe();
+    }
+    if (this.SubscriptionLoading) {
+      this.SubscriptionLoading.unsubscribe();
+    }
   }
 }

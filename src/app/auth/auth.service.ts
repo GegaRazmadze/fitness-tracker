@@ -7,7 +7,7 @@ import { AuthData } from './auth-data.model';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { TrainingService } from '../training/training.service';
-import { UIService } from './shared/ui.service';
+import { UIService } from '../shared/ui.service';
 
 @Injectable({
   providedIn: 'root',

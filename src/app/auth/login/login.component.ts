@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
-import { UIService } from '../shared/ui.service';
+import { UIService } from '../../shared/ui.service';
 
 @Component({
   selector: 'app-login',
@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.SubscriptionLoading.unsubscribe();
+    if (this.SubscriptionLoading) {
+      this.SubscriptionLoading.unsubscribe();
+    }
   }
 }

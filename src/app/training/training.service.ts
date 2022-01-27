@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UIService } from '../auth/shared/ui.service';
+import { UIService } from '../shared/ui.service';
 import { Exercise } from './exercise.model';
 
 @Injectable({
@@ -128,6 +128,8 @@ export class TrainingService {
   }
 
   cancelSubscriptions() {
-    this.SubsFb.forEach((sub) => sub.unsubscribe());
+    if (this.SubsFb.length > 0) {
+      this.SubsFb.forEach((sub) => sub.unsubscribe());
+    }
   }
 }
