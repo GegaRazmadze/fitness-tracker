@@ -9,20 +9,20 @@
   </div>
   <div class="container d-flex justify-content-end">
     <ul class="list-inline d-none d-md-block">
-      <li class="list-inline-item" *ngIf="!isAuth">
+      <li class="list-inline-item" *ngIf="!(isAuth$ | async)">
         <a class="text-decoration-none text-white" routerLink="/signup"
           >Signup</a
         >
       </li>
-      <li class="list-inline-item" *ngIf="!isAuth">
+      <li class="list-inline-item" *ngIf="!(isAuth$ | async)">
         <a class="text-decoration-none text-white" routerLink="/login">Login</a>
       </li>
-      <li class="list-inline-item" *ngIf="isAuth">
+      <li class="list-inline-item" *ngIf="isAuth$ | async">
         <a class="text-decoration-none text-white" routerLink="/training"
           >Training</a
         >
       </li>
-      <li class="list-inline-item" *ngIf="isAuth">
+      <li class="list-inline-item" *ngIf="isAuth$ | async">
         <a class="text-decoration-none text-white" (click)="onLogout()"
           >Logout</a
         >

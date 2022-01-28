@@ -15,6 +15,8 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 
 import { AuthModule } from './auth/auth.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromRoot from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
 
     AuthModule,
+    StoreModule.forRoot(fromRoot.reducers),
   ],
   providers: [],
   bootstrap: [AppComponent],
