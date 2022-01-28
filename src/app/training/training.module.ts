@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { StoreModule } from '@ngrx/store';
+import { trainingReducer } from './store/training.reducer';
 
 import { SharedModule } from '../shared/shared.module';
 import { CurrentTrainingComponent } from './current-training/current-training.component';
@@ -17,7 +19,12 @@ import { TrainingRoutingMOdule } from './training.routing.module';
     PastTrainingComponent,
     StopTrainingComponent,
   ],
-  imports: [AngularFirestoreModule, SharedModule, TrainingRoutingMOdule],
+  imports: [
+    AngularFirestoreModule,
+    SharedModule,
+    TrainingRoutingMOdule,
+    StoreModule.forFeature('training', trainingReducer),
+  ],
   exports: [],
 })
 export class TrainingModule {}

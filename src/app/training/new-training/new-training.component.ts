@@ -1,42 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { TrainingService } from '../training.service';
 import { Exercise } from '../exercise.model';
-import { UIService } from 'src/app/shared/ui.service';
+
+import * as fromTraining from '../store/training.reducer';
+import * as fromRoot from '../../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-new-training',
   templateUrl: './new-training.component.html',
   styleUrls: ['./new-training.component.scss'],
 })
-export class NewTrainingComponent implements OnInit, OnDestroy {
-  exercises!: Exercise[];
+export class NewTrainingComponent implements OnInit {
+  exercises$!: Observable<Exercise[]>;
 
-  isLoading = false;
-
-  private SubscriptionLoading!: Subscription;
-  private SubscriptionExercise!: Subscription;
+  isLoading$!: Observable<boolean>;
 
   constructor(
     private trainingService: TrainingService,
-    private uiService: UIService
+    private store: Store<fromTraining.INewGlobalState>
   ) {}
 
   ngOnInit(): void {
-    this.SubscriptionLoading = this.uiService.loadingStateChanged.subscribe(
-      (isLoading: boolean) => {
-        this.isLoading = isLoading;
-      }
-    );
-
-    this.SubscriptionExercise = this.trainingService.exercisesChanged.subscribe(
-      (exercises: Exercise[]) => {
-        this.exercises = exercises;
-      }
-    );
+    this.isLoading$ = this.store.select(fromRoot.getIsLoading);
+    this.exercises$ = this.store.select(fromTraining.getAvailableTrainings);
     this.fetchExercises();
   }
 
@@ -46,14 +37,5 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
 
   onStartTraining(form: NgForm) {
     this.trainingService.startExercise(form.value.exercise);
-  }
-
-  ngOnDestroy(): void {
-    if (this.SubscriptionExercise) {
-      this.SubscriptionExercise.unsubscribe();
-    }
-    if (this.SubscriptionLoading) {
-      this.SubscriptionLoading.unsubscribe();
-    }
   }
 }

@@ -14,8 +14,6 @@ export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
   isAuth$!: Observable<boolean>;
 
-  SubAuthChange!: Subscription;
-
   constructor(
     private authService: AuthService,
     private store: Store<fromRoot.IAppState>

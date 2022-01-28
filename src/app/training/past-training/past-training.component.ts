@@ -1,23 +1,19 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { Exercise } from '../exercise.model';
 import { TrainingService } from '../training.service';
+
+import * as fromTraining from '../store/training.reducer';
 
 @Component({
   selector: 'app-past-training',
   templateUrl: './past-training.component.html',
   styleUrls: ['./past-training.component.scss'],
 })
-export class PastTrainingComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PastTrainingComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Exercise>();
 
   displayedColumns = ['date', 'name', 'duration', 'calories', 'state'];
@@ -25,14 +21,15 @@ export class PastTrainingComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  private SubscriptionExChanged!: Subscription;
-  constructor(private trainingService: TrainingService) {}
+  constructor(
+    private trainingService: TrainingService,
+    private store: Store<fromTraining.INewGlobalState>
+  ) {}
 
   ngOnInit(): void {
-    this.SubscriptionExChanged =
-      this.trainingService.finishedExercisesChanged.subscribe(
-        (exercises: Exercise[]) => (this.dataSource.data = exercises)
-      );
+    this.store
+      .select(fromTraining.getFinishedTrainings)
+      .subscribe((exercises: Exercise[]) => (this.dataSource.data = exercises));
     this.trainingService.fetchCompletedOrCancelledExercises();
   }
 
@@ -44,11 +41,5 @@ export class PastTrainingComponent implements OnInit, AfterViewInit, OnDestroy {
   doFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
-  }
-
-  ngOnDestroy(): void {
-    if (this.SubscriptionExChanged) {
-      this.SubscriptionExChanged.unsubscribe();
-    }
   }
 }
